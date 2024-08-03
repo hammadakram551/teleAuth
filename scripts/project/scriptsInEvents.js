@@ -5,26 +5,65 @@ const scriptsInEvents = {
 
 	async EventSheet1_Event2(runtime, localVars)
 	{
-		
-		
-		
-		function func(){
-		
-		console.log("before");
-		
-		// Telegram.WebApp.ready();
-		// const authData = Telegram.WebApp.initData;
-		
-		runtime.globalVars.authDataVar = window.authData;
-		
-		console.log("after");
-		}
-		window.func = func;
-		
-		
-		
-		
-		
+
+
+
+function func(){
+
+
+    const authStatus = document.getElementById('auth-status');
+    const authDataDiv = document.getElementById('auth-data');
+
+console.log("before");
+
+// Telegram.WebApp.ready();
+// const authData = Telegram.WebApp.initData;
+
+runtime.globalVars.authDataVar = window.authData;
+authDataDiv.innerText = `Auth Data{window.authData}`
+console.log("after");
+
+
+fetch('https://popular-hyena-proven.ngrok-free.app/auth/telegramAuth', { // Update this URL to your backend endpoint
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      // credentials: 'include',
+      body: new URLSearchParams({ data: window.authData }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        authStatus.innerText = 'Authorization failed!';
+        console.error('Authorization failed:', data.error);
+      } else {
+        authStatus.innerText = 'Authorization succeeded!';
+        gameDiv.style.display = 'block';
+        console.log('Authorization succeeded:', data);
+        authToken = data.token; // Save the token for later use
+        userId = data.userId; // Save the userId for later use
+
+        // Display the token for debugging purposes
+        alert('JWT Token: ' + authToken);
+        console.log('JWT Token:', authToken);
+
+        // Update the current score
+        currentScore = data.currentScore;
+        currentScoreSpan.innerText = currentScore;
+      }
+    })
+    .catch(error => {
+      authStatus.innerText = 'Error during authorization.';
+      console.error('Error:', error);
+    });
+
+
+}
+window.func = func;
+
+
+
+
+
 	}
 
 };

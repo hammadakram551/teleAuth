@@ -4375,8 +4375,9 @@ self.C3_JsPropNameTable = [
 	{Browser: 0},
 	{authDataText: 0},
 	{Button: 0},
-	{HTMLElement: 0},
+	{auth_status: 0},
 	{FileChooser: 0},
+	{HTMLElement: 0},
 	{authDataVar: 0}
 ];
 
@@ -4384,8 +4385,9 @@ self.InstanceType = {
 	Browser: class extends self.IInstance {},
 	authDataText: class extends self.ITextInstance {},
 	Button: class extends self.IButtonInstance {},
-	HTMLElement: class extends self.IHTMLElementInstance {},
-	FileChooser: class extends self.IWorldInstance {}
+	auth_status: class extends self.IHTMLElementInstance {},
+	FileChooser: class extends self.IWorldInstance {},
+	HTMLElement: class extends self.IHTMLElementInstance {}
 }
 }
 
