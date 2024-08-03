@@ -4378,6 +4378,7 @@ self.C3_JsPropNameTable = [
 	{auth_status: 0},
 	{FileChooser: 0},
 	{HTMLElement: 0},
+	{HTMLElement2: 0},
 	{authDataVar: 0}
 ];
 
@@ -4387,7 +4388,8 @@ self.InstanceType = {
 	Button: class extends self.IButtonInstance {},
 	auth_status: class extends self.IHTMLElementInstance {},
 	FileChooser: class extends self.IWorldInstance {},
-	HTMLElement: class extends self.IHTMLElementInstance {}
+	HTMLElement: class extends self.IHTMLElementInstance {},
+	HTMLElement2: class extends self.IHTMLElementInstance {}
 }
 }
 

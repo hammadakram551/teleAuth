@@ -13,6 +13,8 @@ const scriptsInEvents = {
 		
 		    const authStatus = document.getElementById('auth-status');
 		    const authDataDiv = document.getElementById('auth-data');
+			const currentScoreSpan = document.getElementById('current-score');
+			let currentScore = 0;
 		
 		console.log("before");
 		
