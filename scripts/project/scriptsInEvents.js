@@ -12,14 +12,19 @@ const scriptsInEvents = {
 		
 		console.log("before");
 		
-		Telegram.WebApp.ready();
-		const authData = Telegram.WebApp.initData;
+		// Telegram.WebApp.ready();
+		// const authData = Telegram.WebApp.initData;
 		
-		runtime.globalVars.authDataVar = authData;
+		runtime.globalVars.authDataVar = window.authData;
 		
 		console.log("after");
 		}
 		window.func = func;
+		
+		
+		
+		
+		
 	}
 
 };
