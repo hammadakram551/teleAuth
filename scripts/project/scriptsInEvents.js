@@ -126,10 +126,13 @@ function getScore(){
 let authToken = window.authToken;
 let currentScore = 0;
 alert("fetching Scores and And globalAuth is: "+runtime.globalVars.authToken);
-alert("And jwt is "+window.authToken,);
-          fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
-    method: 'GET',
-    headers: { 'Authorization': `Bearer ${authToken}` }
+alert("And jwt is "+window.authToken,);      
+fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
+        method: 'GET', // Ensure this is a POST request
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        },
 })
           .then(response => {
     alert('Response status: '+ response.status);
