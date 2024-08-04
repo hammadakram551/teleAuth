@@ -123,7 +123,7 @@ window.submitScore = submitScore;
 function getScore(){
 let authToken = window.authToken;
 let currentScore = 0;
-alert("fetching Scores and JWT is ", window.authToken," And globalAuth is: ",runtime.globalVars.authToken);
+alert("fetching Scores and And globalAuth is: ",runtime.globalVars.authToken," And jwt is",window.authToken,);
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${window.authToken}` }
