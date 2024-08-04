@@ -138,6 +138,7 @@ alert("And jwt is "+window.authToken,);
 })
 .then(responseText => {
     alert('Response text: '+ responseText);
+	console.log('Response text: ', responseText);
     const scoreData = JSON.parse(responseText);
     currentScore = scoreData[0]?.scores || 0;
     alert("Score is "+ currentScore);
