@@ -5,11 +5,12 @@ const scriptsInEvents = {
 
 	async EventSheet1_Event3(runtime, localVars)
 	{
-const currentScoreSpan = document.getElementById('current-score');
-    let currentScore = 0;
+
 
 
 function func(){
+const currentScoreSpan = document.getElementById('current-score');
+    let currentScore = 0;
 	 let authToken = ""
 
     const authStatus = document.getElementById('auth-status');
@@ -68,6 +69,8 @@ window.func = func;
 
 
     function submitScore() {
+	const currentScoreSpan = document.getElementById('current-score');
+    let currentScore = 0;
       // alert("userId: ",userId)
       fetch('https://popular-hyena-proven.ngrok-free.app/balance/submit', {
         method: 'POST', // Ensure this is a POST request
