@@ -39,7 +39,7 @@ fetch('https://popular-hyena-proven.ngrok-free.app/auth/telegramAuth', { // Upda
       if (data.error) {
         authStatus.innerText = 'Authorization failed!';
         console.error('Authorization failed:', data.error);
-		alert('Authorization failed:', data.error)
+		alert('Authorization failed: '+ data.error)
       } else {
         authStatus.innerText = 'Authorization succeeded!';
 //         gameDiv.style.display = 'block';
@@ -60,7 +60,7 @@ fetch('https://popular-hyena-proven.ngrok-free.app/auth/telegramAuth', { // Upda
     .catch(error => {
       authStatus.innerText = 'Error during authorization.';
       console.error('Error:', error);
-	  alert('error:', error)
+	  alert('error: '+ error)
     });
 
 
@@ -74,7 +74,7 @@ window.func = func;
 	runtime.globalVars.authToken = window.authToken;
 	const currentScoreSpan = document.getElementById('current-score');
     let currentScore = 0;
-      alert("userId: ",user_id," And JWT is ",window.authToken);
+      alert("userId: "+user_id," And JWT is "+window.authToken);
       fetch('https://popular-hyena-proven.ngrok-free.app/balance/submit', {
         method: 'POST', // Ensure this is a POST request
         headers: {
@@ -88,7 +88,7 @@ window.func = func;
       .then(data => {
         if (data.error) {
           console.error('Error updating score:', data.error);
-		  alert('Error updating score:', data.error);
+		  alert('Error updating score: '+ data.error);
         } else {
           console.log('Score updated successfully:', data);
           alert('Score updated successfully! JWT Token: ' + authToken);
@@ -106,8 +106,8 @@ window.func = func;
           })
           .catch(error => {
 		  console.error('Error fetching updated score:', error)
-		  alert('Error fetching updated score:', error);
-		  alert( "And jwt is:",window.authToken)
+		  alert('Error fetching updated score:'+ error);
+		  alert( "And jwt is: "+window.authToken)
 		  });
         }
       })
@@ -125,8 +125,8 @@ window.submitScore = submitScore;
 function getScore(){
 let authToken = window.authToken;
 let currentScore = 0;
-alert("fetching Scores and And globalAuth is: ",runtime.globalVars.authToken);
-alert("And jwt is",window.authToken,);
+alert("fetching Scores and And globalAuth is: "+runtime.globalVars.authToken);
+alert("And jwt is "+window.authToken,);
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${window.authToken}` }
@@ -135,12 +135,12 @@ alert("And jwt is",window.authToken,);
           .then(scoreData => {
             currentScore = scoreData[0]?.scores || 0;
 //             currentScoreSpan.innerText = currentScore;
-			alert("Score is ", currentScore);
+			alert("Score is "+ currentScore);
           })
           .catch(error => {console.error('Error fetching updated score:', error)
 		  
-		  alert('Error fetching updated score:', error);
-		  alert( "And jwt is:",window.authToken)
+		  alert('Error fetching updated score: '+ error);
+		  alert( "And jwt is: "+window.authToken)
 		  });
 		  
 }
