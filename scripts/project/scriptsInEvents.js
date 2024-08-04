@@ -128,15 +128,20 @@ let currentScore = 0;
 alert("fetching Scores and And globalAuth is: "+runtime.globalVars.authToken);
 alert("And jwt is "+window.authToken,);
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
-            method: 'GET',
-            headers: { 'Authorization': `Bearer ${window.authToken}` }
-          })
-          .then(response => response.json())
-          .then(scoreData => {
-            currentScore = scoreData[0]?.scores || 0;
-//             currentScoreSpan.innerText = currentScore;
-			alert("Score is "+ currentScore);
-          })
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${authToken}` }
+})
+          .then(response => {
+    alert('Response status: '+ response.status);
+    alert('Response headers: '+ response.headers);
+    return response.text(); // Change to text to log the full response
+})
+.then(responseText => {
+    alert('Response text: '+ responseText);
+    const scoreData = JSON.parse(responseText);
+    currentScore = scoreData[0]?.scores || 0;
+    alert("Score is "+ currentScore);
+})
           .catch(error => {console.error('Error fetching updated score:', error)
 		  
 		  alert('Error fetching updated score: '+ error);
