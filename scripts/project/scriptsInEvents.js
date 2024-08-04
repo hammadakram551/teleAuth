@@ -3,7 +3,7 @@
 
 const scriptsInEvents = {
 
-	async EventSheet1_Event3(runtime, localVars)
+	async EventSheet1_Event4(runtime, localVars)
 	{
 
 
@@ -116,6 +116,27 @@ window.func = func;
 
 
 window.submitScore = submitScore;
+
+
+
+function getScore(){
+let authToken = window.authToken;
+let currentScore = 0
+alert("fetching Scores and JWT is ", authToken)
+          fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          })
+          .then(response => response.json())
+          .then(scoreData => {
+            currentScore = scoreData[0]?.scores || 0;
+//             currentScoreSpan.innerText = currentScore;
+			alert("Score is ", currentScore)
+          })
+          .catch(error => console.error('Error fetching updated score:', error));
+}
+
+window.getScore = getScore
 
 	}
 

@@ -4411,7 +4411,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.Browser.Acts.ExecJs,
 		C3.Plugins.Text.Acts.SetText,
-		C3.ScriptsInEvents.EventSheet1_Event3
+		C3.ScriptsInEvents.EventSheet1_Event4
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4424,6 +4424,7 @@ self.C3_JsPropNameTable = [
 	{HTMLElement2: 0},
 	{Touch: 0},
 	{Button2: 0},
+	{Button3: 0},
 	{userId: 0},
 	{authToken: 0},
 	{authDataVar: 0}
@@ -4438,7 +4439,8 @@ self.InstanceType = {
 	HTMLElement: class extends self.IHTMLElementInstance {},
 	HTMLElement2: class extends self.IHTMLElementInstance {},
 	Touch: class extends self.IInstance {},
-	Button2: class extends self.IButtonInstance {}
+	Button2: class extends self.IButtonInstance {},
+	Button3: class extends self.IButtonInstance {}
 }
 }
 
@@ -4544,7 +4546,8 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => "submitScore();"
+		() => "submitScore();",
+		() => "getScore();"
 ];
 
 
