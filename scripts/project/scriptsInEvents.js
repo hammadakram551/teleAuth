@@ -11,7 +11,7 @@ const scriptsInEvents = {
 function func(){
 const currentScoreSpan = document.getElementById('current-score');
     let currentScore = 0;
-	 let authToken = ""
+	 let authToken = "";
 
     const authStatus = document.getElementById('auth-status');
     const authDataDiv = document.getElementById('auth-data');
@@ -44,9 +44,9 @@ fetch('https://popular-hyena-proven.ngrok-free.app/auth/telegramAuth', { // Upda
         authStatus.innerText = 'Authorization succeeded!';
 //         gameDiv.style.display = 'block';
         console.log('Authorization succeeded:', data);
-        runtime.globalVars.authToken = data.token;
+        window.authToken = data.token;
 		authToken = data.token;// Save the token for later use
-        runtime.globalVars.userId = data.userId; // Save the userId for later use
+        window.userId = data.userId; // Save the userId for later use
 
         // Display the token for debugging purposes
         alert('JWT Token: ' + authToken);
@@ -69,16 +69,18 @@ window.func = func;
 
 
     function submitScore() {
+	let authToken = window.authToken;
+	let user_id = window.userId;
 	const currentScoreSpan = document.getElementById('current-score');
     let currentScore = 0;
-      // alert("userId: ",userId)
+      alert("userId: ",user_id)
       fetch('https://popular-hyena-proven.ngrok-free.app/balance/submit', {
         method: 'POST', // Ensure this is a POST request
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${runtime.globalVars.authToken}`,
+          'Authorization': `Bearer ${authToken}`,
         },
-        body: JSON.stringify({ userId, score: 400 }), // Include userId
+        body: JSON.stringify({ user_id, score: 400 }), // Include userId
         // credentials: 'include' // Ensure cookies are sent with the request
       })
       .then(response => response.json())
@@ -94,7 +96,7 @@ window.func = func;
           // Re-fetch the updated score from the backend
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${runtime.globalVars.authToken}` }
+            headers: { 'Authorization': `Bearer ${authToken}` }
           })
           .then(response => response.json())
           .then(scoreData => {
