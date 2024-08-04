@@ -106,7 +106,9 @@ window.func = func;
           })
           .catch(error => {
 		  console.error('Error fetching updated score:', error)
-		  alert('Error fetching updated score:', error, "And jwt is:",window.authToken)});
+		  alert('Error fetching updated score:', error);
+		  alert( "And jwt is:",window.authToken)
+		  });
         }
       })
       .catch(error => {
@@ -123,7 +125,8 @@ window.submitScore = submitScore;
 function getScore(){
 let authToken = window.authToken;
 let currentScore = 0;
-alert("fetching Scores and And globalAuth is: ",runtime.globalVars.authToken," And jwt is",window.authToken,);
+alert("fetching Scores and And globalAuth is: ",runtime.globalVars.authToken);
+alert("And jwt is",window.authToken,);
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${window.authToken}` }
@@ -134,7 +137,12 @@ alert("fetching Scores and And globalAuth is: ",runtime.globalVars.authToken," A
 //             currentScoreSpan.innerText = currentScore;
 			alert("Score is ", currentScore);
           })
-          .catch(error => console.error('Error fetching updated score:', error));
+          .catch(error => {console.error('Error fetching updated score:', error)
+		  
+		  alert('Error fetching updated score:', error);
+		  alert( "And jwt is:",window.authToken)
+		  });
+		  
 }
 
 window.getScore = getScore
