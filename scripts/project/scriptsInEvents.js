@@ -71,9 +71,10 @@ window.func = func;
     function submitScore() {
 	let authToken = window.authToken;
 	let user_id = window.userId;
+	runtime.globalVars.authToken = window.authToken;
 	const currentScoreSpan = document.getElementById('current-score');
     let currentScore = 0;
-      alert("userId: ",user_id)
+      alert("userId: ",user_id," And JWT is ",window.authToken);
       fetch('https://popular-hyena-proven.ngrok-free.app/balance/submit', {
         method: 'POST', // Ensure this is a POST request
         headers: {
@@ -105,7 +106,7 @@ window.func = func;
           })
           .catch(error => {
 		  console.error('Error fetching updated score:', error)
-		  alert('Error fetching updated score:', error)});
+		  alert('Error fetching updated score:', error, "And jwt is:",window.authToken)});
         }
       })
       .catch(error => {
@@ -121,17 +122,17 @@ window.submitScore = submitScore;
 
 function getScore(){
 let authToken = window.authToken;
-let currentScore = 0
-alert("fetching Scores and JWT is ", authToken)
+let currentScore = 0;
+alert("fetching Scores and JWT is ", window.authToken," And globalAuth is: ",runtime.globalVars.authToken);
           fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${authToken}` }
+            headers: { 'Authorization': `Bearer ${window.authToken}` }
           })
           .then(response => response.json())
           .then(scoreData => {
             currentScore = scoreData[0]?.scores || 0;
 //             currentScoreSpan.innerText = currentScore;
-			alert("Score is ", currentScore)
+			alert("Score is ", currentScore);
           })
           .catch(error => console.error('Error fetching updated score:', error));
 }
