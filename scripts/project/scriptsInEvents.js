@@ -128,7 +128,7 @@ let currentScore = 0;
 alert("fetching Scores and And globalAuth is: "+runtime.globalVars.authToken);
 alert("And jwt is "+window.authToken,);      
 fetch('https://popular-hyena-proven.ngrok-free.app/balance/score', {
-        method: 'GET', // Ensure this is a POST request
+        method: 'POST', // Ensure this is a POST request
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
